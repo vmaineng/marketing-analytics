@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9f7;
+  --foreground: #1a1814;
+  --card-bg: #ffffff;
+  --card-bg-alt: #f5f3ef;
+  --card-border: #e8e4dc;
+  --text-primary: #1a1814;
+  --text-secondary: #6b6560;
+  --text-muted: #a8a39c;
+  --accent-gold: #b8933e;
+  --accent-gold-soft: #faf6ec;
+  --accent-gold-border: #dcc878;
+  --accent-gold-text: #5c4410;
+  --accent-ink: #1a1814;
+  --accent-ink-text: #faf9f7;
+}
+
+:root.dark {
+  --background: #111009;
+  --foreground: #f5f2ea;
+  --card-bg: #1c1a12;
+  --card-bg-alt: #242218;
+  --card-border: #38352a;
+  --text-primary: #f5f2ea;
+  --text-secondary: #a09880;
+  --text-muted: #58533e;
+  --accent-gold: #d4a84b;
+  --accent-gold-soft: #1c1608;
+  --accent-gold-border: #8a6e28;
+  --accent-gold-text: #f0d898;
+  --accent-ink: #f5f2ea;
+  --accent-ink-text: #111009;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}

@@ -10,9 +10,9 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="w-full px-4 py-5 flex justify-between items-center sticky">
+    <nav className="w-full px-4 py-5 flex justify-between items-center fixed top-0 z-50 bg-background">
       <div className="h-5 w-5 text-(--text-secondary)">Logo</div>
-      <div className="hidden md:flex items-center gap-8">
+      <div className="md:flex items-center gap-8">
         {NAV_ITEMS.map((item) => (
           <div
             key={item}
@@ -25,12 +25,16 @@ export default function Navbar() {
           {theme == "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </button>
       </div>
-      <div className="flex md:hidden items-center gap-4">
+      <div className="hidden md:flex items-center gap-4">
         <button
           onClick={toggleTheme}
-          className="text--(--text-secondary) hover:text-(--text-primary) transition-colors"
+          className="text-(--text-secondary) hover:text-(--text-primary) transition-colors"
         >
-          {theme == "dark" ? <Sun size={20} /> : <Moon size={20} />}
+          {theme == "dark" ? (
+            <Sun className="h-5 w-5" />
+          ) : (
+            <Moon className="h-5 w-5" />
+          )}
         </button>
 
         <button

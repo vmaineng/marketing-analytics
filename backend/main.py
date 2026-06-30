@@ -49,7 +49,7 @@ def date_range_bounds(days: int = 7) -> tuple[str, str]:
 def root():
     return {"status": "ok"}
 
-app.get("/api/overview")
+@app.get("/api/overview")
 def get_overview(days: int = Query(default=7, ge=1, le=90)):
     start, end = date_range_bounds(days)
  

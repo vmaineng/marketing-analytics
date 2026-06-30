@@ -5,6 +5,10 @@ import httpx
 from datetime import date, timedelta
 from typing import Any
 
+from dotenv import load_dotenv
+from pathlib import Path
+load_dotenv(Path(__file__).parent / ".env")
+
 import anthropic
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from supabase import create_client, Client
@@ -23,6 +27,8 @@ META_ACCESS_TOKEN = os.environ["META_ACCESS_TOKEN"]
 META_AD_ACCOUNT_ID = os.environ["META_AD_ACCOUNT_ID"] 
 META_API_VERSION = "v19.0"
 META_BASE = f"https://graph.facebook.com/{META_API_VERSION}"
+
+SUPABASE_AD_ACCOUNT_UUID = os.environ["SUPABASE_AD_ACCOUNT_UUID"]
 
 TOOLS = [
        {
@@ -139,6 +145,7 @@ async def fetch_meta_campaigns() -> dict:
             "name": c["name"],
             "objective": c.get("objective"),
             "status": c.get("status", "UNKNOWN"),
+            "account_id": SUPABASE_AD_ACCOUNT_UUID,
         }, on_conflict="campaign_id").execute()
  
     return {"campaigns": campaigns}
